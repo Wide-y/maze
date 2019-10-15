@@ -5,10 +5,20 @@
         <title>Maze</title>
         <script src="maze.js"></script>
         <link type="text/css" rel="stylesheet" href="maze.css"></link>
+        <link type="text/css" rel="stylesheet" href="bootstrap.css"></link>
     </head>
-    <body onload="init()">
+    <body onload="set()">
         <div id="maze">
             <p>Maze Game</p>
+            
+            行：
+            <input type="number" id="row" value=80></input>
+            列：
+            <input type="number" id="col" value=120></input>
+            <button id="button" onclick="create()">create</button>
+            
+            <br></br>
         </div>
+
     </body>
 </html>

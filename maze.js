@@ -3,8 +3,8 @@ function drawMaze() {
     for( var i = 0; i < cols; i++ ) {
         for( var j = 0; j < rows; j++ ) {
             switch( maze[i][j] ) {
-                case 0: ctx.fillStyle = "black"; break;
-                case 1: ctx.fillStyle = "green"; break;
+                case 0: ctx.fillStyle = "white"; break;
+                case 1: ctx.fillStyle = "black"; break;
                 case 2: ctx.fillStyle = "red"; break;
                 case 3: ctx.fillStyle = "yellow"; break;
                 case 4: ctx.fillStyle = "#500000"; break;
@@ -112,7 +112,7 @@ function createMaze() {
         stack.push( start )
     }
     drawMaze();
-    requestAnimationFrame( createMaze );
+    requestAnimationFrame (createMaze) ;
 }
 function createCanvas( w, h ) {
     var canvas = document.createElement( "canvas" );
@@ -125,7 +125,10 @@ function createCanvas( w, h ) {
     div.appendChild( canvas ); 
 }
 function init() {
-    cols = 120; rows = 80;
+    var p = document.getElementById("maze");
+    var canvas = document.getElementById("canvas");
+    p.removeChild(canvas)
+    stack=[];
     createCanvas( grid * cols, grid * rows );
     maze = createArray( cols, rows );
     start.x = Math.floor( Math.random() * ( cols / 2 ) );
@@ -133,4 +136,14 @@ function init() {
     if( !( start.x & 1 ) ) start.x++; if( !( start.y & 1 ) ) start.y++;
     maze[start.x][start.y] = 0;
     createMaze();
+}
+function create(){
+    cols=eval(document.getElementById("col").value);
+    rows=eval(document.getElementById("row").value);
+    init();
+}
+function set(){
+    cols=120;rows=80;
+    createCanvas( grid * cols, grid * rows );
+    init();
 }
